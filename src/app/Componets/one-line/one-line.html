@@ -1,0 +1,1 @@
+<input type="text" (input)="changeError()" (change)="handleInput($event)" [class.error]="!question().isAttended && isSubmitted()" [value]="question().answerText">

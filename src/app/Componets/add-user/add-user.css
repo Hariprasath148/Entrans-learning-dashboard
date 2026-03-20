@@ -1,0 +1,67 @@
+.add-user-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-user-form label {
+    font-size: 17px;
+}
+
+.heading {
+    font-size: 25px;
+    text-align: center;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.p10 {
+    padding: 10px;
+}
+
+
+.user-input:focus {
+    border : 1px solid blue;
+    outline: none;
+}
+
+.user-input.error {
+    border : 1px solid red;
+    outline: none;
+}
+
+.role-container {
+    display: flex;
+    gap: 10px;
+}
+
+.role-container label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.error-msg {
+    color: red;
+}
+
+.submit-btn {
+    background-color: var(--main-color2);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+}

@@ -1,0 +1,14 @@
+<!-- Question Container -->
+<div class="question-container mb-15" [class.error]="!question().isAttended && isSubmitted()">
+    <div class="question"><span>{{question().id}}.</span> {{question().question}}</div>
+    <!-- Set the question based on the type -->
+    <div class="question-answer-wrapper mt-15">
+        <ng-container [ngSwitch]="question().type">
+            <app-one-line *ngSwitchCase="1" (answerChange)="sendToParentAnswer($event)" [question]="question()" [isSubmitted]="isSubmitted()"></app-one-line>
+            <app-paragraph *ngSwitchCase="2" (answerChange)="sendToParentAnswer($event)" [question]="question()" [isSubmitted]="isSubmitted()"></app-paragraph>
+            <app-mcq *ngSwitchCase="3" (answerChange)="sendToParentAnswer($event)" [question]="question()" [isSubmitted]="isSubmitted()"></app-mcq>
+            <app-checkbox *ngSwitchCase="4" (answerChange)="sendToParentAnswer($event)" [question]="question()" [isSubmitted]="isSubmitted()"></app-checkbox>
+        </ng-container>
+        <p class="error-msg" *ngIf="!question().isAttended && isSubmitted()">This field is required</p>
+    </div>
+</div>

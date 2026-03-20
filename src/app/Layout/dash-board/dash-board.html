@@ -1,0 +1,25 @@
+<!-- Main DashBoard Wrapper -->
+<div class="dash-board-wrapper">
+    <!-- DashBoard Navigaiton Bar  -->
+    <div class="admin-tag">
+        <!-- Admin Tag -->
+        <p class="admin-tag-name">{{User.name}}</p>
+        <!-- Profile and logout container -->
+        <div class="profile-logout-container">
+            <a [routerLink]="['/dashboard/viewUser',User.id]" class="profile"><i class="fas fa-user"></i></a>
+            <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+    <!-- DashBoard Wrapper -->
+    <div class="dash-board-main">
+        <div class="side-bar">
+            <a routerLink="/dashboard" class="side-bar-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">List User</a>
+            <a *ngIf="User.role === 'Admin'" routerLink="/dashboard/addUser" class="side-bar-link" routerLinkActive="active" >Add User</a>
+            <a routerLink="/dashboard/questions" class="side-bar-link" routerLinkActive="active" >Questions</a>
+        </div>
+        <div class="router-wrapper">
+            <!-- Main Outlet contianer -->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

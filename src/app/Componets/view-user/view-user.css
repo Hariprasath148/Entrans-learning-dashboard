@@ -1,0 +1,75 @@
+.heading {
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.error-msg {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 30px;
+    color: grey;
+}
+
+table {
+    margin: auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.table-container {
+    width: 80%;
+    margin: auto;
+    padding: 0 15px 15px 15px;
+    box-shadow: 0 0 5px #d4d0d0;
+    border: 1px solid #d4d0d0;
+    border-radius: 12px;
+}
+
+.back-btn {
+    text-decoration: none;
+    position: absolute;
+    left: -7px;
+    top: 37%;
+    transform: translateY(-50%);
+    background-color: var(--main-color3);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+}
+
+table tr td {
+    padding: 16px 12px;
+}
+
+table tr {
+    border-bottom: 1px solid #d4d0d0;
+}
+
+.button-container {
+    padding: 15px 10px 0px 10px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: center;
+}
+
+.button-container a {
+    padding: 12px 30px;
+    text-decoration: none;
+    background: var(--main-color);
+    color: white;
+    border-radius: 12px;
+}
+
+.button-container a:nth-child(1) {
+    background-color: var(--main-color2);
+}

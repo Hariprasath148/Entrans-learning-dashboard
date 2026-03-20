@@ -1,0 +1,8 @@
+<!-- Quesiton container container wrapper -->
+<div *ngIf="questionStatus" class="question-container-wrapper">
+    <!-- Quesiton container container -->
+    <div class="question-wrapper">
+        <app-question *ngFor="let question of questions.questions" [question]="question" [isSubmitted]="questions.isSubmitted" (getChildAnswer)="setAnswer($event)"></app-question>
+        <button (click)="sumitAnswer()" class="submit-btn">Submit</button>     
+    </div>
+</div>

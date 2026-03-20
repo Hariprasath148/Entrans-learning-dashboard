@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui;
+}
+/* Global Root color Pallet */
+:root {
+    --main-color : #09637E;
+    --main-color2 : #088395;
+    --main-color3 : #7AB2B2;
+    --main-color4 : #EBF4F6;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+/* Toaster Customization */
+.toast-success {
+  box-shadow: none !important;
+  padding: 10px 10px 10px 50px !important;
+  width: 200px !important;
+}

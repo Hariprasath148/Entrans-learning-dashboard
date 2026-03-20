@@ -1,0 +1,35 @@
+<!-- heading -->
+<p class="heading">Details<a class="back-btn" routerLink="/dashboard">Back</a></p>
+<!-- user tag -->
+<div *ngIf="user" class="container">
+    <div class="table-container">
+        <!-- user details table -->
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td>{{user.phoneNumber}}</td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td>{{user.role}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Edit user button -->
+        <div class="button-container">
+            <a [routerLink]="['/dashboard/editUser',user.id]">Edit</a>
+        </div>
+    </div>
+</div>
+
+<!-- error message -->
+<div class="error-msg" *ngIf="!user">{{(errorMsg.length!==0) ? errorMsg : "Loading" }}</div>

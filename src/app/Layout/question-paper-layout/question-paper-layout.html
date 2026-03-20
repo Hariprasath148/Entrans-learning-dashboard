@@ -1,0 +1,12 @@
+<div *ngIf="!questionStatus" class="question-btn-wrapper">
+    <button class="get-question-btn" (click)="getQuestion()">Get Question</button>
+    <a routerLink="/dashboard">dashboard</a>
+</div>
+
+<div *ngIf="questionStatus" class="question-container-wrapper">
+    <div class="header">Answer The Question</div>
+    <div class="question-wrapper">
+        <app-question *ngFor="let question of questions.questions" [question]="question" [isSubmitted]="questions.isSubmitted" (getChildAnswer)="setAnswer($event)"></app-question>
+        <button (click)="sumitAnswer()" class="submit-btn">Submit</button>     
+    </div>
+</div>

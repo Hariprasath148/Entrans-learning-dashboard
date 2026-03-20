@@ -1,0 +1,28 @@
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.question-container {
+    padding: 20px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    background: white;
+    border-left: 5px solid var(--main-color);
+}
+
+.question {
+    font-size: 18px;
+}
+
+.error-msg {
+    margin-top: 10px;
+    color: red;
+}
+
+.question-container.error {
+    border-left: 5px solid red;
+}

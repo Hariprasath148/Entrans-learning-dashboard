@@ -1,0 +1,1 @@
+<textarea (input)="changeError()" (change)="handleInput($event)" rows="4" [class.error]="!question().isAttended && isSubmitted()" [value]="question().answerText"></textarea>
