@@ -8,7 +8,7 @@ import { Auth } from './auth';
 })
 export class User {
   /** Backend URl */
-  private baseUrl = "http://localhost:5058/user";
+  private baseUrl = "https://entrans-leraning-backend.onrender.com/user";
 
   /** All Users Details Behaviour Subject */
   private allUserSubject = new BehaviorSubject<any[]>([]);
