@@ -126,8 +126,11 @@ export class ListUser {
    */
   reset() {
     if(this.searchText.length == 0) {
-      if(this.isSearch) this.getUserByPage(3); 
-      else this.getUserByPage(4)
+      if(this.isSearch) {
+        this.isSearch = false; 
+        this.getUserByPage(3)
+      }
+      else this.getUserByPage(4);
       this.isSearch = false;
       return;
     }
