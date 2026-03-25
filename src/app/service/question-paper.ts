@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class QuestionPaper {
 
   /** Backend URl */
-  private baseUrl = "https://entrans-leraning-backend.onrender.com/questionPaper";
+  private baseUrl = "https://entrans-leraning-backend.onrender.com/user";
+  //private baseUrl = "http://localhost:5058/user";
 
   constructor(private http:HttpClient) {}
 

@@ -11,7 +11,13 @@
     overflow: hidden;
 }
 
+.isSearchTextEmpty {
+    border: 1px solid #ff0000ad !important;
+}
 
+.isSearchTextEmpty::placeholder {
+    color: #ff0000ad !important;
+}
 
 thead tr {
     background-color: var(--main-color2);

@@ -1,7 +1,7 @@
 <div *ngIf="User">
     <div class="serch-bar-container">
         <div class="input-container">
-            <input type="text" name="serch" id="search" [(ngModel)]="searchText" placeholder="Search by id , name, email or phone...">
+            <input [class.isSearchTextEmpty] = "isSearchEmpty && searchText.length == 0" type="text" name="serch" id="search" [(ngModel)]="searchText" placeholder="Search by id , name, email or phone...">
             <button (click)="reset()" class="reset-btn"><i class="fas fa-undo"></i></button>
         </div>
         <button class="search-btn" (click)="search(3)">Serach</button>

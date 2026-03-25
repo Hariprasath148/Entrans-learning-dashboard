@@ -34,6 +34,9 @@ export class ListUser {
 
   /** Indicates whether search button is clicked or not */
   public isSearch:boolean = false;
+  
+  /** Indicates whether the search text is empty or not */
+  public isSearchEmpty:boolean = false;
 
   /** Disables the "Previous" button when on the first page */
   public isPreDisable:boolean = true;
@@ -100,7 +103,9 @@ export class ListUser {
    * @returns doesn't return anything
    */
   search(state:number) {
+    if(this.searchText.length == 0) { this.isSearchEmpty=true; return; }
     this.isSearch = true;
+    this.isSearchEmpty=false;
     this.userService.search(this.searchText,state).subscribe({
       next : (data)=> {   
         if(state == 4 && data.users.length == 0 && data.totalCount > 1) this.getUserByPage(0);
@@ -125,6 +130,7 @@ export class ListUser {
    * @returns doen't return anything
    */
   reset() {
+    this.isSearchEmpty=false;
     if(this.searchText.length == 0) {
       if(this.isSearch) {
         this.isSearch = false; 
