@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class QuestionPaper {
 
   /** Backend URl */
-  //private baseUrl = "https://entrans-leraning-backend.onrender.com/questionPaper";
-  private baseUrl = "http://localhost:5058/questionPaper";
+  private baseUrl = "https://entrans-leraning-backend.onrender.com/questionPaper";
+  //private baseUrl = "http://localhost:5058/questionPaper";
 
   private questionPaperSubject = new BehaviorSubject<any>({});
   public questionPaper$ = this.questionPaperSubject.asObservable();

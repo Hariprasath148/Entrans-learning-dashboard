@@ -8,8 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class Auth {
 
   /** Backend URl */
-  //private baseUrl = "https://entrans-leraning-backend.onrender.com/user";
-  private baseUrl = "http://localhost:5058/user";
+  private baseUrl = "https://entrans-leraning-backend.onrender.com/user";
+  //private baseUrl = "http://localhost:5058/user";
   
   /** current user Behaviour Subject */
   private currentUserSubject = new BehaviorSubject<any>(null);
