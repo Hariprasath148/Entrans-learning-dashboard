@@ -13,10 +13,12 @@ export class QuestionPaperComponent {
   constructor(private questionPaperService:QuestionPaper,private cd : ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.questionPaperService.getAllQuestionPaper().subscribe((data)=> {
-      this.questionPaper = data;
-      this.cd.detectChanges();
-    });
+    setTimeout(()=> {
+        this.questionPaperService.getAllQuestionPaper().subscribe((data)=> {
+        this.questionPaper = data;
+        this.cd.detectChanges();
+      });
+    },1);
   }
 
 }

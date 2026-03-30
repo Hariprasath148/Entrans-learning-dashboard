@@ -35,7 +35,7 @@ export class QuestionWrapper {
    */
   ngOnInit() {
    this.questionPaperServie.questionPaper$.subscribe(data => this.questions = data);
-   this.getQuestion();
+   setTimeout(()=> {this.getQuestion();},1);
   }
   
   /**
