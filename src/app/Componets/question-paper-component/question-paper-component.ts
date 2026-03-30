@@ -9,15 +9,18 @@ import { QuestionPaper } from '../../service/question-paper';
 })
 export class QuestionPaperComponent {
   public questionPaper:any[] = [];
+  
+  public loading = true;
 
   constructor(private questionPaperService:QuestionPaper,private cd : ChangeDetectorRef) {}
 
   ngOnInit() {
     setTimeout(()=> {
         this.questionPaperService.getAllQuestionPaper().subscribe((data)=> {
-        this.questionPaper = data;
-        this.cd.detectChanges();
-      });
+          this.questionPaper = data;
+          this.loading = false;
+          this.cd.detectChanges();
+        });
     },1);
   }
 

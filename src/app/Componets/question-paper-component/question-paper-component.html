@@ -1,7 +1,7 @@
 <p class="heading">Question Papers</p>
 
 <div *ngIf="questionPaper.length == 0" class="questionNotFound">
-    no Records Found
+    {{loading ? "Loading" : "no Records Found"}}
 </div>
 
 <div *ngIf="questionPaper.length != 0" class="question-paper-wrapper">
