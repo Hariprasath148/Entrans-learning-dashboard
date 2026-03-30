@@ -23,8 +23,8 @@
 .back-btn {
     text-decoration: none;
     position: absolute;
-    left: -7px;
-    top: -42px;
+    left: 2px;
+    top: -32px;
     background-color: var(--main-color3);
     border: none;
     padding: 10px 20px;
@@ -47,6 +47,10 @@
 
 .mt20 {
     margin-top: 20px;
+}
+
+.mt25{
+    margin-top: 25px;
 }
 
 .p10 {

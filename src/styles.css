@@ -7,15 +7,25 @@
 }
 /* Global Root color Pallet */
 :root {
-    --main-color : #09637E;
-    --main-color2 : #088395;
-    --main-color3 : #7AB2B2;
-    --main-color4 : #EBF4F6;
-}
+    /* --main-color: #222831;
+    --main-color2: #31363F;
+    --main-color3: #76ABAE;
+    --main-color4: #EEEEEE; */
 
+    --main-color: #2A2438;
+    --main-color2: #4F3B78;
+    --main-color3: #927FBF;
+    --main-color4: #e2dfef;
+
+    /* --main-color: #2A2438;
+    --main-color2: #352F44;
+    --main-color3: #5C5470;
+    --main-color4: #DBD8E3; */
+}
+/* 
 html {
     overflow-y: scroll;
-}
+} */
 
 body {
     background-color: #f9f9f9;
@@ -26,4 +36,8 @@ body {
   box-shadow: none !important;
   padding: 10px 10px 10px 50px !important;
   width: 200px !important;
+}
+
+.main-field-indicator {
+    color: red;
 }

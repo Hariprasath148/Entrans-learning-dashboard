@@ -25,8 +25,9 @@ export class Paragraph {
    * 
    * @returns doen't return anything
    */
-  changeError() {
-    this.question().isAttended=true;
+  changeError(e :Event) {
+    if((e.target as HTMLInputElement).value.length == 0) this.question().isAttended=false;
+    else this.question().isAttended=true;
   }
 
   /**
@@ -39,6 +40,9 @@ export class Paragraph {
    * @returns doen't return anything
    */
   handleInput(e : Event):any {
+    if((e.target as HTMLInputElement).value.length == 0) {
+      return;
+    }
     this.answerChange.emit({
       id : this.question().id,
       answerText : (e.target as HTMLInputElement).value,

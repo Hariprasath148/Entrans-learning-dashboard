@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Observable  , of, Subject} from 'rxjs';
+import { BehaviorSubject, from, Observable  , of, Subject, tap} from 'rxjs';
 import { Question } from '../Componets/question/question';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,8 +10,11 @@ import { HttpClient } from '@angular/common/http';
 export class QuestionPaper {
 
   /** Backend URl */
-  private baseUrl = "https://entrans-leraning-backend.onrender.com/questionPaper";
-  //private baseUrl = "http://localhost:5058/questionPaper";
+  //private baseUrl = "https://entrans-leraning-backend.onrender.com/questionPaper";
+  private baseUrl = "http://localhost:5058/questionPaper";
+
+  private questionPaperSubject = new BehaviorSubject<any>({});
+  public questionPaper$ = this.questionPaperSubject.asObservable();
 
   constructor(private http:HttpClient) {}
 
@@ -23,10 +26,15 @@ export class QuestionPaper {
    * 
    * @returns{Obsevable<any>} Observable emitting allQuestion in array of objects fom backend
    */
-  getAllQuestion():Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/getAllQuestions`);
+  getAllQuestion(id:number):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getAllQuestions/${id}`).pipe(
+      tap(data => this.questionPaperSubject.next(data))
+    );
   }   
 
+  getAllQuestionPaper():Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getAllQuestionPaper`);
+  }
   /**
    * setAnswer - update the answer
    * 
@@ -36,8 +44,15 @@ export class QuestionPaper {
    * @returns{Obsevable<any>} Observable emitting answer updated status
    */
   setAnswer(answer:any):Observable<any> {
-    console.log(answer);
-    return this.http.post<any>(`${this.baseUrl}/editQuestion`,answer);
+    const anwserObject = {
+      questionPaperId : this.questionPaperSubject.value.id,
+      questionsId : answer.id,
+      ...(answer.answerList
+        ? { answerList: answer.answerList }
+        : { answer : answer.answerText })
+    }
+    console.log(anwserObject);
+    return this.http.post<any>(`${this.baseUrl}/setQuestionPaperAnswer`,anwserObject);
   }
   
   /**
@@ -49,6 +64,6 @@ export class QuestionPaper {
    * @returns{Obsevable<any>} Observable emitting answer submitted status
    */
   checkAnswer():Observable<any>  {
-    return this.http.post<any>(`${this.baseUrl}/submitQuestions`,null);
+    return this.http.post<any>(`${this.baseUrl}/submitQuestions/${this.questionPaperSubject.value.id}`,null);
   }
 }

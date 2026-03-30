@@ -20,6 +20,8 @@ export class Question {
    */
   question = input<any>();
 
+  questionNumber = input<number>();
+
   /**
    * send the answer to parent container
    * 

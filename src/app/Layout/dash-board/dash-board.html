@@ -13,13 +13,15 @@
     <!-- DashBoard Wrapper -->
     <div class="dash-board-main">
         <div class="side-bar">
-            <a routerLink="/dashboard" class="side-bar-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">List User</a>
-            <a *ngIf="User.role === 'Admin'" routerLink="/dashboard/addUser" class="side-bar-link" routerLinkActive="active" >Add User</a>
-            <a routerLink="/dashboard/questions" class="side-bar-link" routerLinkActive="active" >Questions</a>
+            <a routerLink="/dashboard" class="side-bar-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><i class="fa-solid fa-list"></i>List User</a>
+            <a *ngIf="User.role === 'Admin'" routerLink="/dashboard/addUser" class="side-bar-link" routerLinkActive="active" ><i class="fa-solid fa-user-plus"></i>Add User</a>
+            <a routerLink="/dashboard/questionPaper" class="side-bar-link" routerLinkActive="active" ><i class="fa-regular fa-file"></i>Question Papers</a>
         </div>
         <div class="router-wrapper">
             <!-- Main Outlet contianer -->
-            <router-outlet></router-outlet>
+            <div class="router-container">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>

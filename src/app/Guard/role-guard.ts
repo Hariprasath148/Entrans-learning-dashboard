@@ -27,10 +27,13 @@ export const RoleGuard: CanActivateFn = (route, state) => {
   /**
    * current is user role is User and they only allow to the ther data view and edit
    */
-  if(id && user.role === "User" && id != user.id) {
-    router.navigate(['dashboard']);
-    return false;
-  }
+
+   if (route.data['checkOwnership']) {
+      if (id && user.role === "User" && id != user.id) {
+        router.navigate(['dashboard']);
+        return false;
+      }
+    }
 
   return true;
 };

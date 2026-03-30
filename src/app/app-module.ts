@@ -25,6 +25,7 @@ import { EditUser } from './Componets/edit-user/edit-user';
 import { QuestionWrapper } from './Componets/question-wrapper/question-wrapper';
 import { Auth } from './service/auth';
 import { AuthInterceptor } from './Interceptor/auth-interceptor';
+import { QuestionPaperComponent } from './Componets/question-paper-component/question-paper-component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthInterceptor } from './Interceptor/auth-interceptor';
     ListUser,
     ViewUser,
     EditUser,
-    QuestionWrapper
+    QuestionWrapper,
+    QuestionPaperComponent
   ],
   imports: [
     /** Modules */

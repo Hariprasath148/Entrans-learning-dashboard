@@ -35,8 +35,8 @@ table {
 .back-btn {
     text-decoration: none;
     position: absolute;
-    left: -7px;
-    top: 37%;
+    left: 2px;
+    top: 65%;
     transform: translateY(-50%);
     background-color: var(--main-color3);
     border: none;

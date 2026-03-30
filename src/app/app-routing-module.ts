@@ -10,6 +10,7 @@ import { EditUser } from './Componets/edit-user/edit-user';
 import {AuthGuard} from './Guard/auth-guard'
 import { QuestionWrapper } from './Componets/question-wrapper/question-wrapper';
 import { RoleGuard } from './Guard/role-guard';
+import { QuestionPaperComponent } from './Componets/question-paper-component/question-paper-component';
 
 const routes: Routes = [
   {path : "" , component : Home , title : "Home"},
@@ -24,9 +25,10 @@ const routes: Routes = [
     children : [
       {path : "", component : ListUser ,data :{roles : ['Admin','User']}},
       {path : "addUser", component : AddUser , title : "Add User",data :{roles : ['Admin']}},
-      {path : "questions", component : QuestionWrapper , title : "Questions" ,data :{roles : ['Admin','User']}},
-      {path : "viewUser/:id", component : ViewUser , title : "View User" ,data :{roles : ['Admin','User']}},
-      {path : "editUser/:id", component : EditUser , title : "Edit User" ,data :{roles : ['Admin','User']}},
+      {path : "questionPaper", component : QuestionPaperComponent , title : "Question Paper" ,data :{roles : ['Admin','User']}},
+      {path : "questions/:id", component : QuestionWrapper , title : "Questions" ,data :{roles : ['Admin','User']}},
+      {path : "viewUser/:id", component : ViewUser , title : "View User" ,data :{roles : ['Admin','User'] , checkOwnership: true}},
+      {path : "editUser/:id", component : EditUser , title : "Edit User" ,data :{roles : ['Admin','User'] , checkOwnership: true}},
     ]
   }
 ];

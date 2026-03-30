@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { QuestionPaper } from '../../service/question-paper';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dash-board',
@@ -22,7 +23,7 @@ export class QuestionPaperLayout {
    */
   questions:any = {}; 
 
-  constructor(private questionPaperServie : QuestionPaper , private cd : ChangeDetectorRef) {}
+  constructor(private questionPaperServie : QuestionPaper , private cd : ChangeDetectorRef,private route : ActivatedRoute) {}
 
   // ngOnInit() {
   //  this.questionPaperServie.getAllQuestion().subscribe({
@@ -44,18 +45,26 @@ export class QuestionPaperLayout {
    * get the question from the backend and update the record in the questions and update the question status
    */
   getQuestion() {
-    this.questionPaperServie.getAllQuestion().subscribe({
-      next : (data) => {
-        this.questions = data;
-        this.questionStatus = true;
-        console.log("This is the fetched Quesitons =",this.questions);
-        this.cd.detectChanges();
-      },
-      error : (error) => {
-        this.questionStatus = true;
-        console.log("Something Went Wrong",error);
-      }
-    });
+
+    this.route.paramMap.subscribe(params => {
+      /**
+       * get the id from the route
+       */
+      let id:number = Number(params.get('id'));
+
+      this.questionPaperServie.getAllQuestion(id).subscribe({
+        next : (data) => {
+          this.questions = data;
+          this.questionStatus = true;
+          console.log("This is the fetched Quesitons =",this.questions);
+          this.cd.detectChanges();
+        },
+        error : (error) => {
+          this.questionStatus = true;
+          console.log("Something Went Wrong",error);
+        }
+      });
+    })
   }
 
   /**

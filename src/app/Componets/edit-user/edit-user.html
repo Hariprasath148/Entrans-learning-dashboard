@@ -7,26 +7,26 @@
     <!-- update form -->
     <form #updateUserForm="ngForm" class="add-user-form" (ngSubmit)="updateUser(updateUserForm)">
         <!-- Full Name input -->
-        <label for="name" class="mt20">Full Name</label>
+        <label for="name" class="mt25">Full Name<span class="main-field-indicator">*</span></label>
         <input type="text" id="name" name="name" class="user-input p10 mt10" [class.error]="updateUserForm.controls['name']?.['errors']?.['required'] ||updateUserForm.controls['name']?.['errors']?.['pattern'] " [(ngModel)]="user.name" required pattern="^[a-zA-Z0-9\s\-_.]+$">
         <!-- Full name error text -->
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['name']?.['errors']?.['required']">Enter Your Full Name</p>
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['name']?.['errors']?.['pattern']">Invalid Name</p>
         <!-- Email input -->
-        <label for="email" class="mt20">Email</label>
+        <label for="email" class="mt20">Email<span class="main-field-indicator">*</span></label>
         <input type="email" id="email" name="email" class="user-input p10 mt10" [class.error]="updateUserForm.controls['email']?.['errors']?.['required'] || updateUserForm.controls['email']?.['errors']?.['email']" [(ngModel)]="user.email" required email>
         <!-- Email error  -->
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['email']?.['errors']?.['required']">Enter Your Email</p>
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['email']?.['errors']?.['email'] ">Invalid Email</p>
         <p *ngIf="User.id == user.id && User.email != user.email" class="mt10 error-msg">Warning: Changing your Email may Request you to login again after reload.</p>
         <!-- Phone Number input -->
-        <label for="phoneNumber" class="mt20">Phone Number</label>
+        <label for="phoneNumber" class="mt20">Phone Number<span class="main-field-indicator">*</span></label>
         <input type="tel" name="phoneNumber" id="phoneNumber" [(ngModel)]="user.phoneNumber" required pattern="[0-9]{10}" class="user-input p10 mt10" [class.error]="updateUserForm.controls['phoneNumber']?.['errors']?.['required'] || updateUserForm.controls['phoneNumber']?.['errors']?.['pattern']">
         <!-- Phone Number Error Text -->
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['phoneNumber']?.['errors']?.['required']">Enter Your Phone Number</p>
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['phoneNumber']?.['errors']?.['pattern'] ">Invalid Phone Number</p>
         <!-- Role input -->
-        <label for="role" class="mt20">Role</label>
+        <label for="role" class="mt20">Role<span class="main-field-indicator">*</span></label>
         <div *ngIf="User.role != 'User'" class="role-container mt10">
             <label for="user"><input type="radio" id="user" name="role" [(ngModel)]="user.role" value="User" required><Span>User</Span></label>
             <label for="admin"><input type="radio" id="admin" name="role" [(ngModel)]="user.role" value="Admin" ><Span>Admin</Span></label>

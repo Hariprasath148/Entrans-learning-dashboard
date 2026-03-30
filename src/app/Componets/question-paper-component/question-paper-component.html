@@ -1,0 +1,15 @@
+<p class="heading">Question Papers</p>
+
+<div *ngIf="questionPaper.length == 0" class="questionNotFound">
+    no Records Found
+</div>
+
+<div *ngIf="questionPaper.length != 0" class="question-paper-wrapper">
+    <div *ngFor="let questionPaper of questionPaper; let i = index" class="question-paper-container">
+        <div class="question-paper-title">
+            <p>{{i+1}}.</p>
+            <p>{{questionPaper.title}}</p>
+        </div>
+        <a class="question-paper-navigation" [routerLink]="['/dashboard/questions',questionPaper.id]">Attend</a>
+    </div>
+</div>

@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             <tr *ngIf="users.length == 0">
-                <td class="not-found" colspan="7">No Records Found</td>
+                <td class="not-found" colspan="8">No Records Found</td>
             </tr>
             <ng-container *ngIf="users.length != 0">
                 <tr *ngFor="let user of users;let i = index">

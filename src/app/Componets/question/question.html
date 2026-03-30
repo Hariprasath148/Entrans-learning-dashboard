@@ -1,6 +1,6 @@
 <!-- Question Container -->
 <div class="question-container mb-15" [class.error]="!question().isAttended && isSubmitted()">
-    <div class="question"><span>{{question().id}}.</span> {{question().question}}</div>
+    <div class="question"><span>{{questionNumber()}}.</span> {{question().question}}</div>
     <!-- Set the question based on the type -->
     <div class="question-answer-wrapper mt-15">
         <ng-container [ngSwitch]="question().type">

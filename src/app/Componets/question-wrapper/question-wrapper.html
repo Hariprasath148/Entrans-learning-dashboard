@@ -1,8 +1,15 @@
 <!-- Quesiton container container wrapper -->
 <div *ngIf="questionStatus" class="question-container-wrapper">
     <!-- Quesiton container container -->
-    <div class="question-wrapper">
-        <app-question *ngFor="let question of questions.questions" [question]="question" [isSubmitted]="questions.isSubmitted" (getChildAnswer)="setAnswer($event)"></app-question>
+     <div class="question-wrapper" *ngIf="questions.questions.length == 0">
+        <p class="error-msg">No questions found</p>
+    </div>
+    <div class="question-wrapper" *ngIf="questions.questions.length != 0">
+        <p class="heading">{{questions.title}}</p>
+        <app-question *ngFor="let question of questions.questions; let i = index" [question]="question" [questionNumber]="i+1" [isSubmitted]="questions.isSubmitted" (getChildAnswer)="setAnswer($event)"></app-question>
         <button (click)="sumitAnswer()" class="submit-btn">Submit</button>     
     </div>
 </div>
+
+<!-- error message -->
+<div class="error-msg" *ngIf="!questionStatus">{{(errorMsg.length!==0) ? errorMsg : "Loading" }}</div>
