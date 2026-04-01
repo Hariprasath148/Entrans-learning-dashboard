@@ -12,4 +12,9 @@
 </div>
 
 <!-- error message -->
-<div class="error-msg" *ngIf="!questionStatus">{{(errorMsg.length!==0) ? errorMsg : "Loading" }}</div>
+<div class="error-msg" *ngIf="!questionStatus">
+    <div *ngIf="errorMsg.length===0" class="question-container-loader">
+        <p class="question-loader"></p>
+    </div>
+    <p *ngIf="errorMsg.length!==0">{{errorMsg}}</p>
+</div>

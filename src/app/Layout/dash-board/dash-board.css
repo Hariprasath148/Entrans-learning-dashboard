@@ -33,13 +33,18 @@
     height: 35px;
     background-color: white;
     border-radius: 50%;
-    color: #a1a1a1;
+    color: var(--main-color3);
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-left: 1px;
     transition: 0.1s all ease-in;
+}
+
+.profile:hover {
+    background-color: var(--main-color3);
+    color: white;
 }
 
 .profile:hover {
@@ -73,6 +78,9 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
+    padding-right: 10px;
+    padding-top: 10px;
+    gap: 5px;
 }
 
 .router-wrapper {
@@ -98,14 +106,23 @@
     font-size: 18px;
     transition: 0.2s all ease-in;
     border-left: 5px solid transparent;
+    border-radius: 0 10px 10px 0;
 }
 
 .side-bar i {
     margin-right: 10px;
 }
 
-.side-bar-link.active,.side-bar-link:hover {
+
+.side-bar-link:hover {
     background-color: #eaeaea;
     color: black;
+    border-left: 5px solid var(--main-color);
+}
+
+.side-bar-link.active {
+    background-color: var(--main-color2);
+    color: white;
+    background: linear-gradient(181deg,var(--main-color3) 0%, var(--main-color2) 75%);
     border-left: 5px solid var(--main-color);
 }

@@ -2,6 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Loader } from '../service/loader';
 import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 
 let requestCount = 0;
 
@@ -11,8 +12,15 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
    */
 
   var loaderService = inject(Loader);
-  requestCount++;
-  loaderService.setLoading(true);
+  var router = inject(Router);
+
+  if(!router.url.includes("questions")) {
+    requestCount++;
+    loaderService.setLoading(true);
+  }
+  else {
+    requestCount++;
+  }
  
   const cloneReq = req.clone({withCredentials:true});
   return next(cloneReq).pipe(

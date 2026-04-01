@@ -7,3 +7,7 @@ label {
 input {
     accent-color: var(--main-color3);
 }
+
+input:hover {
+    cursor: pointer;
+}

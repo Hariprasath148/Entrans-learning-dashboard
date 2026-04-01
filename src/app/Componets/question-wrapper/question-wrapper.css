@@ -5,6 +5,12 @@
     background-color: var(--main-color2);
     color: white;
     border-radius: 5px;
+    transition: 0.2s all ease;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
 }
 
 .error-msg {
@@ -15,7 +21,31 @@
 }
 
 .heading {
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 32px;
+    font-weight: 500;
+    color: var(--main-color2);
+}
+
+.question-container-loader {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.question-loader {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 6px solid var(--main-color);
+    border-right: 6px solid transparent;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

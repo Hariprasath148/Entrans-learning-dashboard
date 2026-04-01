@@ -76,6 +76,12 @@
     border: 0;
     border-radius: 10px;
     color: white;
+    transition: 0.2s all ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--main-color2);
+    cursor: pointer;
 }
 
 .input-field:focus {
