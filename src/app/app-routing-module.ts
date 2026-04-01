@@ -25,7 +25,7 @@ const routes: Routes = [
       {path : "", component : ListUser ,data :{roles : ['Admin','User']}},
       {path : "addUser", component : AddUser , title : "Add User",data :{roles : ['Admin']}},
       {path : "questionPaper", component : QuestionPaperComponent , title : "Question Paper" ,data :{roles : ['Admin','User']}},
-      {path : "questions/:id", component : QuestionWrapper , title : "Questions" ,data :{roles : ['Admin','User']}},
+      {path : "questionPaper/questions/:id", component : QuestionWrapper , title : "Questions" ,data :{roles : ['Admin','User']}},
       {path : "viewUser/:id", component : ViewUser , title : "View User" ,data :{roles : ['Admin','User'] , checkOwnership: true}},
       {path : "editUser/:id", component : EditUser , title : "Edit User" ,data :{roles : ['Admin','User'] , checkOwnership: true}},
     ]
