@@ -14,7 +14,6 @@ import { QuestionPaperComponent } from './Componets/question-paper-component/que
 
 const routes: Routes = [
   {path : "" , component : Home , title : "Home"},
-  {path: "questionPaper", component: QuestionPaperLayout , title : "Quesiton Paper"},
   {path : "dashboard" , 
     component : DashBoard , 
     title : "DashBoard",
