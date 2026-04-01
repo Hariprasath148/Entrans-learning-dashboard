@@ -17,6 +17,8 @@ export class DashBoard {
   */
   public User:any;
 
+  public isSideBar = false;
+
   constructor(private userService : User , private authService : Auth , private router: Router,private cd : ChangeDetectorRef,private toastr: ToastrService) {}
 
   /**
