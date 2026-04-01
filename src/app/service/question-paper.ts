@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, from, Observable  , of, Subject, tap} from 'rxjs';
 import { Question } from '../Componets/question/question';
 import { HttpClient } from '@angular/common/http';
+import { BaseUrl } from './constant';
 
 
 @Injectable({
@@ -10,8 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class QuestionPaper {
 
   /** Backend URl */
-  private baseUrl = "https://entrans-leraning-backend.onrender.com/questionPaper";
-  //private baseUrl = "http://localhost:5058/questionPaper";
+  private baseUrl = `${BaseUrl}/questionPaper`;
 
   private questionPaperSubject = new BehaviorSubject<any>({});
   public questionPaper$ = this.questionPaperSubject.asObservable();

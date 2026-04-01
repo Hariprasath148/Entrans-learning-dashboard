@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { BaseUrl } from './constant';
 
 @Injectable({
   providedIn: 'root',
@@ -8,8 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class Auth {
 
   /** Backend URl */
-  private baseUrl = "https://entrans-leraning-backend.onrender.com/user";
-  //private baseUrl = "http://localhost:5058/user";
+  private baseUrl = `${BaseUrl}/user`;
   
   /** current user Behaviour Subject */
   private currentUserSubject = new BehaviorSubject<any>(null);
