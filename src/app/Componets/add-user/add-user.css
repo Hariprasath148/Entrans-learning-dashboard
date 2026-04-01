@@ -71,3 +71,7 @@
     cursor: pointer;
     background-color: var(--main-color);
 }
+
+.role-radio {
+    accent-color: var(--main-color3);
+}

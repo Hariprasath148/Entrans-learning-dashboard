@@ -28,8 +28,8 @@
         <label for="role" class="mt20">Role<span class="main-field-indicator">*</span></label>
         <!-- Role input -->
         <div class="role-container mt10">
-            <label for="user"><input type="radio" id="user" name="role" ngModel value="User" required><Span>User</Span></label>
-            <label for="admin"><input type="radio" id="admin" name="role" ngModel value="Admin" ><Span>Admin</Span></label>
+            <label for="user"><input class="role-radio" type="radio" id="user" name="role" ngModel value="User" required><Span>User</Span></label>
+            <label for="admin"><input class="role-radio" type="radio" id="admin" name="role" ngModel value="Admin" ><Span>Admin</Span></label>
         </div>
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['role']?.['errors']?.['required'] ">Select the Role</p>
         <p class="error-msg mt10" *ngIf="isError">{{errorMsg}}</p>
