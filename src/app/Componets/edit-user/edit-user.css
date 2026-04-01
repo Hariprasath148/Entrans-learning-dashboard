@@ -97,3 +97,7 @@
     margin-top: 30px;
     color: grey;
 }
+
+.role-radio {
+    accent-color: var(--main-color3);
+}

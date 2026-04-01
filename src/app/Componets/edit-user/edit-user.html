@@ -28,8 +28,8 @@
         <!-- Role input -->
         <label for="role" class="mt20">Role<span class="main-field-indicator">*</span></label>
         <div *ngIf="User.role != 'User'" class="role-container mt10">
-            <label for="user"><input type="radio" id="user" name="role" [(ngModel)]="user.role" value="User" required><Span>User</Span></label>
-            <label for="admin"><input type="radio" id="admin" name="role" [(ngModel)]="user.role" value="Admin" ><Span>Admin</Span></label>
+            <label for="user"><input class="role-radio" type="radio" id="user" name="role" [(ngModel)]="user.role" value="User" required><Span>User</Span></label>
+            <label for="admin"><input class="role-radio" type="radio" id="admin" name="role" [(ngModel)]="user.role" value="Admin" ><Span>Admin</Span></label>
         </div>
         <p *ngIf="User.role == 'User'" class="mt10 text-light">Ask the Admin to change you Role</p>
         <p *ngIf="User.id == user.id && User.role == 'Admin' &&  user.role == 'User'" class="mt10 error-msg">Warning: Changing your role to User may restrict your access after reload.</p>
