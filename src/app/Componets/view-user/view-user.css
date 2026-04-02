@@ -27,8 +27,8 @@ table {
     width: 80%;
     margin: auto;
     padding: 0 15px 15px 15px;
-    box-shadow: 0 0 5px #d4d0d0;
-    border: 1px solid #d4d0d0;
+    box-shadow: 0 0 5px var(--main-color4);
+    border: 1px solid var(--main-color4);
     border-radius: 12px;
 }
 

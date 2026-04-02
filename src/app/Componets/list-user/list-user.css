@@ -165,6 +165,7 @@ tbody tr {
     justify-content: space-around;
     color: var(--main-color);
     background-color: var(--main-color4);
+    margin-bottom: 10px;
 }
 
 .page-navigation-btn {

@@ -11,7 +11,7 @@
 
 .admin-tag {
     padding: 20px 30px;
-    background-color: var(--main-color);
+    background: linear-gradient(182deg,var(--main-color2) 0%, var(--main-color) 75%);
     color: white;
     text-align: center;
     font-size: 24px;
