@@ -28,7 +28,7 @@ html {
 } */
 
 body {
-    background-color: #f9f9f9;
+    background-color: var(--main-color4);
 }
 
 /* Toaster Customization */

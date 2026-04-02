@@ -52,11 +52,12 @@
 
 .logout-btn {
     padding: 9px 30px;
-    border: none;
     border-radius: 6px;
     font-size: 13px;
-    background-color: white;
+    background-color: transparent;
     transition: 0.1s all ease-in;
+    color: white;
+    border: 1px solid white;
 }
 
 .logout-btn:hover {
@@ -107,6 +108,11 @@
     border-radius: 0 10px 10px 0;
     background-color: var(--main-color2);
     color: #fff;
+    transition: 0.2s all ease-in;
+}
+
+.side-bar-nav-btn:hover {
+    background-color: var(--main-color3);
 }
 
 .router-wrapper {
@@ -121,7 +127,7 @@
 .router-container {
     overflow: auto;
     height: stretch;
-    padding: 12px 12px 0px 12px;
+    padding: 18px 12px 0px 12px;
 }
 
 .side-bar-link {
