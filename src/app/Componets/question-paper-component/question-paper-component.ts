@@ -9,7 +9,9 @@ import { QuestionPaper } from '../../service/question-paper';
 })
 export class QuestionPaperComponent {
   public questionPaper:any[] = [];
-  
+
+  public progress:number = 0;
+
   public loading = true;
 
   constructor(private questionPaperService:QuestionPaper,private cd : ChangeDetectorRef) {}
@@ -17,7 +19,8 @@ export class QuestionPaperComponent {
   ngOnInit() {
     setTimeout(()=> {
         this.questionPaperService.getAllQuestionPaper().subscribe((data)=> {
-          this.questionPaper = data;
+          this.questionPaper = data.questionPaper;
+          this.progress = data.userProgress;
           this.loading = false;
           this.cd.detectChanges();
         });

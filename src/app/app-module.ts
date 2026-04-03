@@ -26,6 +26,8 @@ import { QuestionWrapper } from './Componets/question-wrapper/question-wrapper';
 import { Auth } from './service/auth';
 import { AuthInterceptor } from './Interceptor/auth-interceptor';
 import { QuestionPaperComponent } from './Componets/question-paper-component/question-paper-component';
+import { CircleProgressComponent } from './Componets/circle-progress/circle-progress';
+//import { CircleProgressComponent } from './Componets/circle-progress/circle-progress';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { QuestionPaperComponent } from './Componets/question-paper-component/que
     ViewUser,
     EditUser,
     QuestionWrapper,
-    QuestionPaperComponent
+    QuestionPaperComponent,
+    CircleProgressComponent
   ],
   imports: [
     /** Modules */

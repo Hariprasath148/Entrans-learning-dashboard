@@ -1,0 +1,23 @@
+<div class="circle-container">
+  <svg width="80" height="80">
+    <circle
+      class="bg"
+      cx="40"
+      cy="40"
+      r="30"
+    ></circle>
+
+    <circle
+      class="progress"
+      cx="40"
+      cy="40"
+      r="30"
+      [attr.stroke-dasharray]="circumference"
+      [attr.stroke-dashoffset]="dashOffset"
+    ></circle>
+  </svg>
+
+  <div class="percentage">
+    {{ progress }}%
+  </div>
+</div>
