@@ -2,19 +2,35 @@
 <div *ngIf="questionPaper.length == 0" class="questionNotFound">
     {{loading ? "Loading" : "no Records Found"}}
 </div>
-<div *ngIf="questionPaper.length != 0" class="question-paper-wrapper">
+<div *ngIf="questionPaper.length != 0" class="quesiton-paper-serach-wrapper">
     <div class="progress-search-container">
-        <div class="search-container"></div>
+        <div class="search-container">
+            <div class="serach-input-container">
+                <input type="text" name="search" class="serach-input" placeholder="Enter input for the serach">
+            </div>
+            <div class="suggestion-container">
+                <button>Programming +</button>
+                <button>Frontend +</button>
+                <button>Backend +</button>
+                <button>Cricket +</button>
+                <button>Football +</button>
+                <button>Sports +</button>
+                <button>Skills +</button>
+                <button>Riddle +</button>
+            </div>
+        </div>
         <div class="progress-container">
             <app-circle-progress [progress]="progress"></app-circle-progress>
             <p class="completed-message">Completed</p>
         </div>
     </div>
-    <div *ngFor="let questionPaper of questionPaper; let i = index" class="question-paper-container">
-        <div class="question-paper-title">
-            <p>{{i+1}}.</p>
-            <p>{{questionPaper.title}}</p>
+    <div class="question-paper-wrapper">
+        <div *ngFor="let questionPaper of questionPaper; let i = index" class="question-paper-container">
+            <div class="question-paper-title">
+                <p>{{i+1}}.</p>
+                <p>{{questionPaper.title}}</p>
+            </div>
+            <a class="question-paper-navigation" [routerLink]="['/dashboard/questionPaper/questions',questionPaper.id]">Attend</a>
         </div>
-        <a class="question-paper-navigation" [routerLink]="['/dashboard/questionPaper/questions',questionPaper.id]">Attend</a>
     </div>
 </div>
