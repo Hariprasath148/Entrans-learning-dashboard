@@ -6,37 +6,39 @@
         </div>
         <button class="search-btn" (click)="search(3)">Serach</button>
     </div>
-    <table  class="user-table">
-        <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
-                <th *ngIf="User.role === 'Admin'">View</th>
-                <th *ngIf="User.role === 'Admin'">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngIf="users.length == 0">
-                <td class="not-found" colspan="8">No Records Found</td>
-            </tr>
-            <ng-container *ngIf="users.length != 0">
-                <tr *ngFor="let user of users;let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{user.id}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.phoneNumber}}</td>
-                    <td>{{user.role}}</td>
-                    <td  *ngIf="User.role === 'Admin'"><a class="view-button" [routerLink]="['/dashboard/viewUser',user.id]">View</a></td>
-                    <td  *ngIf="User.role === 'Admin'" class="delete-td"><button class="delete-button" (click)="deleteUserByID(user.id)">Delete</button></td>
+    <div class="container-wrapper">
+        <table  class="user-table">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th *ngIf="User.role === 'Admin'">View</th>
+                    <th *ngIf="User.role === 'Admin'">Delete</th>
                 </tr>
-            </ng-container>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <tr *ngIf="users.length == 0">
+                    <td class="not-found" colspan="8">No Records Found</td>
+                </tr>
+                <ng-container *ngIf="users.length != 0">
+                    <tr *ngFor="let user of users;let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phoneNumber}}</td>
+                        <td>{{user.role}}</td>
+                        <td  *ngIf="User.role === 'Admin'"><a class="view-button" [routerLink]="['/dashboard/viewUser',user.id]">View</a></td>
+                        <td  *ngIf="User.role === 'Admin'" class="delete-td"><button class="delete-button" (click)="deleteUserByID(user.id)">Delete</button></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
     <div class="pagination-container d-flex" *ngIf="users.length != 0">
         <div class="page-number-btn-container  d-flex">
             <button (click)="getUserByPage(0)" class="previous-btn page-navigation-btn d-flex" [disabled]="isPreDisable"><span><</span>previous</button>

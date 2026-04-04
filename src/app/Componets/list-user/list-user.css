@@ -165,7 +165,7 @@ tbody tr {
     justify-content: space-around;
     color: var(--main-color);
     background-color: var(--main-color4);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .page-navigation-btn {
@@ -182,3 +182,6 @@ tbody tr {
     font-size: 22px;
 }
 
+.container-wrapper {
+    min-height: calc(100vh - 276px);
+}
