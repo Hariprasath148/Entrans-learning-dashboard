@@ -70,6 +70,8 @@
 .progress-search-container {
     display: flex;
     justify-content: space-between;
+    overflow: auto;
+    width: 100%;
 }
 
 .progress-container {
@@ -124,6 +126,7 @@
     background-color: #eaeaea;
     border-radius: 10px;
     transition: 0.2s all ease;
+    width: max-content;
 }
 
 .suggestion-container button:hover {

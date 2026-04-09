@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { User } from '../../service/user';
 import { Router } from '@angular/router';
 import { Auth } from '../../service/auth';
@@ -28,6 +28,13 @@ export class DashBoard {
     this.authService.currentUser$.subscribe(user=> {
       this.User = user;
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any) {
+    if(event.target.innerWidth < 1000) {
+      this.isSideBar = true;
+    } 
   }
 
   /**
