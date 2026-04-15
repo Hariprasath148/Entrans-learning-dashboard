@@ -1,27 +1,37 @@
-<!-- heading -->
-<p class="heading">Edit</p>
 <!-- Update Form container -->
 <div *ngIf="user" class="form-container">
     <!-- Back button -->
     <a class="back-btn" [routerLink]="['/dashboard/viewUser/',user.id]">Back</a> 
+    <!-- heading -->
+    <h2 class="headding-tag">Edit</h2>
+    <p class="headding-discription">Change the details below to edit user.</p>
     <!-- update form -->
     <form #updateUserForm="ngForm" class="add-user-form" (ngSubmit)="updateUser(updateUserForm)">
         <!-- Full Name input -->
         <label for="name" class="mt25">Full Name<span class="main-field-indicator">*</span></label>
-        <input type="text" id="name" name="name" class="user-input p10 mt10" [class.error]="updateUserForm.controls['name']?.['errors']?.['required'] ||updateUserForm.controls['name']?.['errors']?.['pattern'] " [(ngModel)]="user.name" required pattern="^[a-zA-Z0-9\s\-_.]+$">
+        <div class="input-container mt10" [class.error]="updateUserForm.controls['name']?.['errors']?.['required'] ||updateUserForm.controls['name']?.['errors']?.['pattern'] " >
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="name" name="name" class="user-input p10" [(ngModel)]="user.name" required pattern="^[a-zA-Z0-9\s\-_.]+$">
+        </div>
         <!-- Full name error text -->
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['name']?.['errors']?.['required']">Enter Your Full Name</p>
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['name']?.['errors']?.['pattern']">Invalid Name</p>
         <!-- Email input -->
         <label for="email" class="mt20">Email<span class="main-field-indicator">*</span></label>
-        <input type="email" id="email" name="email" class="user-input p10 mt10" [class.error]="updateUserForm.controls['email']?.['errors']?.['required'] || updateUserForm.controls['email']?.['errors']?.['email']" [(ngModel)]="user.email" required email>
+        <div class="input-container mt10" [class.error]="updateUserForm.controls['email']?.['errors']?.['required'] || updateUserForm.controls['email']?.['errors']?.['email']" >
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" id="email" name="email" class="user-input p10" [(ngModel)]="user.email" required email>
+        </div>
         <!-- Email error  -->
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['email']?.['errors']?.['required']">Enter Your Email</p>
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['email']?.['errors']?.['email'] ">Invalid Email</p>
         <p *ngIf="User.id == user.id && User.email != user.email" class="mt10 error-msg">Warning: Changing your Email may Request you to login again after reload.</p>
         <!-- Phone Number input -->
         <label for="phoneNumber" class="mt20">Phone Number<span class="main-field-indicator">*</span></label>
-        <input type="tel" name="phoneNumber" id="phoneNumber" [(ngModel)]="user.phoneNumber" required pattern="[0-9]{10}" class="user-input p10 mt10" [class.error]="updateUserForm.controls['phoneNumber']?.['errors']?.['required'] || updateUserForm.controls['phoneNumber']?.['errors']?.['pattern']">
+        <div class="input-container mt10" [class.error]="updateUserForm.controls['phoneNumber']?.['errors']?.['required'] || updateUserForm.controls['phoneNumber']?.['errors']?.['pattern']" >
+            <i class="fa-solid fa-phone"></i>
+            <input type="tel" name="phoneNumber" id="phoneNumber" [(ngModel)]="user.phoneNumber" required pattern="[0-9]{10}" class="user-input p10">
+        </div>
         <!-- Phone Number Error Text -->
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['phoneNumber']?.['errors']?.['required']">Enter Your Phone Number</p>
         <p class="error-msg mt5" *ngIf="updateUserForm.controls['phoneNumber']?.['errors']?.['pattern'] ">Invalid Phone Number</p>

@@ -1,6 +1,6 @@
 .chat-page-container {
   display: flex;
-  height: calc(100vh - 155px);
+  height: calc(100vh - 168px);
   background-color: var(--main-color4);
   position: relative;
 }

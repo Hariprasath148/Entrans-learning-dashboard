@@ -1,6 +1,22 @@
 .add-user-form {
     display: flex;
     flex-direction: column;
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.headding-tag {
+    font-size: 32px;
+    color: var(--main-color);
+}
+
+.headding-discription {
+    font-size: 18px;
+    color: gray;
+    margin-top: 6px;
+    margin-bottom: 15px;
 }
 
 .add-user-form label {
@@ -32,15 +48,42 @@
     padding: 10px;
 }
 
+.user-input {
+    flex: 1;
+    border: none;
+}
 
-.user-input:focus {
+.input-container:focus {
     border : 1px solid blue;
     outline: none;
 }
 
-.user-input.error {
+.user-input:focus {
+    border : none;
+    outline: none;
+}
+
+.input-container.error {
     border : 1px solid red;
     outline: none;
+}
+
+.input-container.error  i{
+    color: red;
+}
+
+.input-container  i{
+    color: var(--main-color2);
+}
+
+.input-container 
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 7px 7px 7px 10px;
+    border-radius: 4px;
 }
 
 .role-container {

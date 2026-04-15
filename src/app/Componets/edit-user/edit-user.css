@@ -1,6 +1,24 @@
 .add-user-form {
     display: flex;
     flex-direction: column;
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin-top: 14px;
+    margin-bottom: 15px;
+}
+
+.headding-tag {
+    margin-top: 14px;
+    font-size: 32px;
+    color: var(--main-color);
+}
+
+.headding-discription {
+    font-size: 18px;
+    color: gray;
+    margin-top: 6px;
+    margin-bottom: 8px;
 }
 
 .add-user-form label {
@@ -14,6 +32,7 @@
 .heading {
     font-size: 25px;
     text-align: center;
+    color: var(--main-color);
 }
 
 .text-light {
@@ -22,15 +41,18 @@
 
 .back-btn {
     text-decoration: none;
-    position: absolute;
+    /* position: absolute; */
     left: 2px;
-    top: -32px;
+    top: -54px;
     background-color: var(--main-color3);
     border: none;
     padding: 10px 20px;
     border-radius: 12px;
     color: white;
     font-size: 16px;
+    width: fit-content;
+    display: block;
+    margin-top: 1px;
 }
 
 .mt5 {
@@ -57,15 +79,43 @@
     padding: 10px;
 }
 
+.user-input {
+    flex: 1;
+    border: none;
+}
 
-.user-input:focus {
+
+.input-container:focus {
     border : 1px solid blue;
     outline: none;
 }
 
-.user-input.error {
+.user-input:focus {
+    border : none;
+    outline: none;
+}
+
+.input-container.error {
     border : 1px solid red;
     outline: none;
+}
+
+.input-container.error  i{
+    color: red;
+}
+
+.input-container  i{
+    color: var(--main-color2);
+}
+
+.input-container 
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 7px 7px 7px 10px;
+    border-radius: 4px;
 }
 
 .role-container {

@@ -1,27 +1,41 @@
 <!-- Add new user Form container -->
 <div class="form-container">
+    <h2 class="headding-tag">Add User</h2>
+    <p class="headding-discription">Fill in the details below to add new user.</p>
     <!-- add new user form -->
     <form #addNewUserForm="ngForm" class="add-user-form" (ngSubmit)="addNewUser(addNewUserForm)">
         <!-- Full Name input -->
         <label for="name" class="">Full Name<span class="main-field-indicator">*</span></label>
-        <input type="text" id="name" name="name" class="user-input p10 mt10" [class.error]="addNewUserForm.submitted && (addNewUserForm.controls['name']?.['errors']?.['required'] || addNewUserForm.controls['name']?.['errors']?.['pattern'])" ngModel required pattern="^[a-zA-Z0-9\s\-_.]+$">
+        <div class="input-container mt10" [class.error]="addNewUserForm.submitted && (addNewUserForm.controls['name']?.['errors']?.['required'] || addNewUserForm.controls['name']?.['errors']?.['pattern'])" >
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="name" name="name" class="user-input p10" ngModel required pattern="^[a-zA-Z0-9\s\-_.]+$">
+        </div>
         <!-- Full name error text -->
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['name']?.['errors']?.['required']">Enter Your Full Name</p>
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['name']?.['errors']?.['pattern']">Invalid Name</p>
         <!-- Email input -->
         <label for="email" class="mt20">Email<span class="main-field-indicator">*</span></label>
-        <input type="email" id="email" name="email" class="user-input p10 mt10" [class.error]="addNewUserForm.submitted && (addNewUserForm.controls['email']?.['errors']?.['required'] || addNewUserForm.controls['email']?.['errors']?.['email'])" ngModel required email>
+        <div class="input-container mt10" [class.error]="addNewUserForm.submitted && (addNewUserForm.controls['email']?.['errors']?.['required'] || addNewUserForm.controls['email']?.['errors']?.['email'])">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" id="email" name="email" class="user-input p10" ngModel required email>
+        </div>
         <!-- Email error  -->
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['email']?.['errors']?.['required']">Enter Your Email</p>
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['email']?.['errors']?.['email'] ">Invalid Email</p>
         <!-- Set Password Input -->
         <label for="password" class="mt20">Set Password<span class="main-field-indicator">*</span></label>
-        <input type="text" id="password" name="password" class="user-input p10 mt10" [class.error]="addNewUserForm.submitted && addNewUserForm.controls['password']?.['errors']?.['required']" ngModel required>
+        <div class="input-container mt10" [class.error]="addNewUserForm.submitted && addNewUserForm.controls['password']?.['errors']?.['required']">
+            <i class="fa-solid fa-lock"></i>
+            <input type="text" id="password" name="password" class="user-input p10" ngModel required>
+        </div>
         <!-- Set password Error Text -->
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['password']?.['errors']?.['required']">Enter Password for the User</p>
         <!-- Phone Number input -->
         <label for="phoneNumber" class="mt20">Phone Number<span class="main-field-indicator">*</span></label>
-        <input type="tel" name="phoneNumber" id="phoneNumber" ngModel required pattern="[0-9]{10}" class="user-input p10 mt10" [class.error]="addNewUserForm.submitted && (addNewUserForm.controls['phoneNumber']?.['errors']?.['required'] || addNewUserForm.controls['phoneNumber']?.['errors']?.['pattern'])">
+        <div class="input-container mt10" [class.error]="addNewUserForm.submitted && (addNewUserForm.controls['phoneNumber']?.['errors']?.['required'] || addNewUserForm.controls['phoneNumber']?.['errors']?.['pattern'])">
+            <i class="fa-solid fa-phone"></i>
+            <input type="tel" name="phoneNumber" id="phoneNumber" ngModel required pattern="[0-9]{10}" class="user-input p10">
+        </div>
         <!-- Phone Number Error Text -->
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['phoneNumber']?.['errors']?.['required']">Enter Your Phone Number</p>
         <p class="error-msg mt5" *ngIf="addNewUserForm.submitted && addNewUserForm.controls['phoneNumber']?.['errors']?.['pattern'] ">Invalid Phone Number</p>
