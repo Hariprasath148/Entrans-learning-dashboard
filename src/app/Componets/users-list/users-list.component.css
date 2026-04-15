@@ -1,0 +1,175 @@
+.users-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  gap: 8px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1cfcf;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  padding: 0 12px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background-color: transparent;
+  padding: 10px 0;
+  font-size: 14px;
+  outline: none;
+  color: var(--main-color);
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-clear-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--main-color2);
+  cursor: pointer;
+  padding: 5px;
+  font-size: 14px;
+  transition: 0.2s all ease;
+  opacity: 1;
+}
+
+.search-clear-btn:hover {
+  color: var(--main-color);
+}
+
+.search-clear-btn.hidden {
+  display: none;
+}
+
+/* Users List */
+.users-list {
+  flex: 1;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: 0.2s all ease;
+  gap: 12px;
+}
+
+.user-item:hover {
+  background-color: #f9f9f9;
+}
+
+.user-item.active {
+  background-color: var(--main-color4);
+  border-left: 4px solid var(--main-color2);
+  padding-left: 11px;
+}
+
+/* User Avatar */
+.user-avatar {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  color: var(--main-color2);
+}
+
+/* User Info */
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--main-color);
+  margin-bottom: 4px;
+}
+
+.last-message {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* User Meta */
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.last-message-time {
+  font-size: 11px;
+  color: #999;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d0d0d0;
+}
+
+.status-indicator.online {
+  background-color: #22c55e;
+}
+
+/* No Users Found */
+.no-users-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #999;
+  font-size: 14px;
+}
+
+/* Scrollbar Styling */
+.users-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.users-list::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.users-list::-webkit-scrollbar-thumb {
+  background-color: var(--main-color3);
+  border-radius: 3px;
+}
+
+.users-list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--main-color2);
+}

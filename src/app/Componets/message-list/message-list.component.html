@@ -1,0 +1,12 @@
+<div class="messages-container" #messagesContainer>
+  <div *ngFor="let message of messages" class="message-wrapper" [class.sent]="message.isSent">
+    <div class="message-bubble" [class.sent]="message.isSent">
+      <p class="message-text">{{ message.text }}</p>
+      <span class="message-timestamp">{{ message.timestamp }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="messages.length === 0" class="no-messages">
+    <p>No messages yet. Start a conversation!</p>
+  </div>
+</div>

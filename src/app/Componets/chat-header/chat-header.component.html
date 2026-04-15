@@ -1,0 +1,25 @@
+<div class="chat-header" *ngIf="user">
+  <div class="header-left">
+    <div class="user-avatar-large">
+      {{ user.avatar }}
+    </div>
+    <div class="user-details">
+      <h2 class="user-name">{{ user.name }}</h2>
+      <div class="user-status" [class.online]="user.status === 'online'">
+        <span class="status-dot"></span>
+        {{ user.status === 'online' ? 'Active now' : 'Offline' }}
+      </div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="action-btn" title="Call">
+      <i class="fas fa-phone"></i>
+    </button>
+    <button class="action-btn" title="Video Call">
+      <i class="fas fa-video"></i>
+    </button>
+    <button class="action-btn" title="More options">
+      <i class="fas fa-ellipsis-v"></i>
+    </button>
+  </div>
+</div>

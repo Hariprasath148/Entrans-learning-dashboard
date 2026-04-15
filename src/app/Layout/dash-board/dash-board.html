@@ -17,6 +17,7 @@
                 <a routerLink="/dashboard" class="side-bar-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><i class="fa-solid fa-list"></i>List User</a>
                 <a *ngIf="User.role === 'Admin'" routerLink="/dashboard/addUser" class="side-bar-link" routerLinkActive="active" ><i class="fa-solid fa-user-plus"></i>Add User</a>
                 <a routerLink="/dashboard/questionPaper" class="side-bar-link" routerLinkActive="active" ><i class="fa-regular fa-file"></i>Question Papers</a>
+                <a routerLink="/dashboard/chat" class="side-bar-link" routerLinkActive="active" ><i class="fa-solid fa-comments"></i>Chat</a>
             </div>
             <button class="side-bar-nav-btn" (click)="isSideBar = !isSideBar"><i *ngIf="!isSideBar" class="fa-solid fa-angle-left"></i><i *ngIf="isSideBar" class="fa-solid fa-angle-right"></i></button>
         </div>

@@ -109,6 +109,7 @@
     background-color: var(--main-color2);
     color: #fff;
     transition: 0.2s all ease-in;
+    z-index: 99999;
 }
 
 .side-bar-nav-btn:hover {
@@ -159,4 +160,21 @@
     color: white;
     background: linear-gradient(181deg,var(--main-color3) 0%, var(--main-color2) 75%);
     border-left: 5px solid var(--main-color);
+}
+
+.router-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.router-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.router-container::-webkit-scrollbar-thumb {
+  background-color: var(--main-color3);
+  border-radius: 3px;
+}
+
+.router-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--main-color2);
 }

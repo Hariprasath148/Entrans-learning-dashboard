@@ -1,0 +1,51 @@
+<div class="users-list-wrapper">
+  <!-- Search Bar -->
+  <div class="search-container">
+    <div class="search-input-wrapper">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search users..."
+        [value]="searchText"
+        (input)="onSearchChange($event)"
+      />
+    </div>
+    <button
+      class="search-clear-btn"
+      (click)="onSearchClear()"
+      [class.hidden]="!searchText"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Users List -->
+  <div class="users-list">
+    <ng-container *ngIf="users.length > 0">
+      <div
+        *ngFor="let user of users"
+        class="user-item"
+        [class.active]="isUserSelected(user)"
+        (click)="onUserClick(user)"
+      >
+        <div class="user-avatar">
+          {{ user.avatar }}
+        </div>
+        <div class="user-info">
+          <div class="user-name">{{ user.name }}</div>
+          <div class="last-message">{{ user.lastMessage }}</div>
+        </div>
+        <div class="user-meta">
+          <div class="last-message-time">{{ user.lastMessageTime }}</div>
+          <div class="status-indicator" [class.online]="user.status === 'online'"></div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="users.length === 0">
+      <div class="no-users-found">
+        <p>No users found</p>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -11,6 +11,8 @@ import {AuthGuard} from './Guard/auth-guard'
 import { QuestionWrapper } from './Componets/question-wrapper/question-wrapper';
 import { RoleGuard } from './Guard/role-guard';
 import { QuestionPaperComponent } from './Componets/question-paper-component/question-paper-component';
+import { ChatPageComponent } from './Componets/chat-page/chat-page.component';
+import { ErrorPageComponent } from './Componets/error-page/error-page.component';
 
 const routes: Routes = [
   {path : "" , component : Home , title : "Home"},
@@ -28,8 +30,11 @@ const routes: Routes = [
       {path : "questionPaper/questions/:id", component : QuestionWrapper , title : "Questions" ,data :{roles : ['Admin','User']}},
       {path : "viewUser/:id", component : ViewUser , title : "View User" ,data :{roles : ['Admin','User'] , checkOwnership: true}},
       {path : "editUser/:id", component : EditUser , title : "Edit User" ,data :{roles : ['Admin','User'] , checkOwnership: true}},
+      {path : "chat", component : ChatPageComponent , title : "Chat" ,data :{roles : ['Admin','User']}},
     ]
-  }
+  },
+  {path : "not-found", component : ErrorPageComponent , title : "Page Not Found"},
+  {path : "**", component : ErrorPageComponent , title : "Page Not Found"}
 ];
 
 @NgModule({

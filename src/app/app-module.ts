@@ -27,6 +27,12 @@ import { Auth } from './service/auth';
 import { AuthInterceptor } from './Interceptor/auth-interceptor';
 import { QuestionPaperComponent } from './Componets/question-paper-component/question-paper-component';
 import { CircleProgressComponent } from './Componets/circle-progress/circle-progress';
+import { ChatPageComponent } from './Componets/chat-page/chat-page.component';
+import { UsersListComponent } from './Componets/users-list/users-list.component';
+import { ChatHeaderComponent } from './Componets/chat-header/chat-header.component';
+import { MessageListComponent } from './Componets/message-list/message-list.component';
+import { MessageInputComponent } from './Componets/message-input/message-input.component';
+import { ErrorPageComponent } from './Componets/error-page/error-page.component';
 //import { CircleProgressComponent } from './Componets/circle-progress/circle-progress';
 
 @NgModule({
@@ -47,7 +53,13 @@ import { CircleProgressComponent } from './Componets/circle-progress/circle-prog
     EditUser,
     QuestionWrapper,
     QuestionPaperComponent,
-    CircleProgressComponent
+    CircleProgressComponent,
+    ChatPageComponent,
+    UsersListComponent,
+    ChatHeaderComponent,
+    MessageListComponent,
+    MessageInputComponent,
+    ErrorPageComponent
   ],
   imports: [
     /** Modules */

@@ -1,0 +1,42 @@
+<div class="chat-page-container">
+  <!-- Toggle button for mobile -->
+  <button class="sidebar-toggle" (click)="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Users List Sidebar -->
+  <div class="users-sidebar" [class.open]="isSidebarOpen">
+    <app-users-list
+      [users]="filteredUsers"
+      [selectedUser]="selectedUser"
+      [searchText]="searchText"
+      (userSelected)="selectUser($event)"
+      (searchChanged)="onSearchChange($event)"
+      (searchCleared)="clearSearch()"
+    ></app-users-list>
+  </div>
+
+  <!-- Chat Section -->
+  <div class="chat-section">
+    <ng-container *ngIf="selectedUser">
+      <!-- Chat Header -->
+      <app-chat-header [user]="selectedUser"></app-chat-header>
+
+      <!-- Messages Container -->
+      <app-message-list [messages]="messages"></app-message-list>
+
+      <!-- Message Input -->
+      <app-message-input
+        [(messageInput)]="messageInput"
+        (sendMessage)="sendMessage()"
+      ></app-message-input>
+    </ng-container>
+
+    <!-- No user selected -->
+    <ng-container *ngIf="!selectedUser">
+      <div class="no-user-selected">
+        <p>Select a user to start chatting</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
