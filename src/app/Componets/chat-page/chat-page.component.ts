@@ -50,15 +50,11 @@ export class ChatPageComponent {
     this.senderId = this.authService.getUser().id;
     this.signalR.startConnection(this.senderId);
     this.signalR.receiveMessage((senderId: number, message: string) => {
-      console.log("hi")
       this.messages.push({
         id: 6,
         senderId: senderId,
         text: message,
-        timestamp: new Date().toLocaleTimeString([], {
-          hour: '2-digit',
-          minute: '2-digit',
-        }),
+        timestamp: new Date().toLocaleTimeString(),
         isSent: false,
       });
       setTimeout(() => {
@@ -122,10 +118,7 @@ export class ChatPageComponent {
       id: this.messages.length + 1,
       senderId: this.senderId,
       text:  this.messageInput,
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
+      timestamp: new Date().toISOString(),
       isSent: true 
     };
 
