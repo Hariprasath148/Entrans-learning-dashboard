@@ -33,6 +33,7 @@ import { ChatHeaderComponent } from './Componets/chat-header/chat-header.compone
 import { MessageListComponent } from './Componets/message-list/message-list.component';
 import { MessageInputComponent } from './Componets/message-input/message-input.component';
 import { ErrorPageComponent } from './Componets/error-page/error-page.component';
+import { SignalRService } from './service/signal-rservice';
 //import { CircleProgressComponent } from './Componets/circle-progress/circle-progress';
 
 @NgModule({
@@ -84,7 +85,8 @@ import { ErrorPageComponent } from './Componets/error-page/error-page.component'
     /** Users defined Services */
     QuestionPaper,
     User,
-    Auth
+    Auth,
+    SignalRService
   ],
   bootstrap: [App]
 })

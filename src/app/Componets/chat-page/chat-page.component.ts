@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { SignalRService } from '../../service/signal-rservice';
+import { Auth } from '../../service/auth';
 
 export interface User {
   id: number;
@@ -24,6 +26,7 @@ export interface Message {
   styleUrl: './chat-page.component.css',
 })
 export class ChatPageComponent {
+
   /* Dummy users list */
   users: User[] = [
     {
@@ -131,17 +134,32 @@ export class ChatPageComponent {
     },
   ];
 
+  senderId = 1;
+  receiverId = 2;
+
   /* State */
   selectedUser: User | null = null;
   searchText: string = '';
   messageInput: string = '';
   isSidebarOpen: boolean = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef,private signalR: SignalRService , private authService : Auth) {}
 
   ngOnInit() {
     /* Select the first user by default */
     this.selectedUser = this.users[0];
+    this.signalR.startConnection(this.senderId);
+    this.senderId = this.authService.getUser().id;
+    this.signalR.receiveMessage((senderId: number, message: string) => {
+      console.log("hi")
+      this.messages.push({
+        id: 1,
+        senderId: senderId,
+        text: message,
+        timestamp: '2:30 PM',
+        isSent: false,
+      });
+    });
   }
 
   /**
@@ -182,19 +200,21 @@ export class ChatPageComponent {
     if (!this.messageInput.trim() || !this.selectedUser) {
       return;
     }
+    
+    this.signalR.sendMessage(1,2,this.messageInput);
 
-    const newMessage: Message = {
-      id: this.messages.length + 1,
-      senderId: 0,
-      text: this.messageInput,
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
-      isSent: true,
-    };
+    // const newMessage: Message = {
+    //   id: this.messages.length + 1,
+    //   senderId: 0,
+    //   text: this.messageInput,
+    //   timestamp: new Date().toLocaleTimeString([], {
+    //     hour: '2-digit',
+    //     minute: '2-digit',
+    //   }),
+    //   isSent: true,
+    // };
 
-    this.messages.push(newMessage);
+    //this.messages.push(newMessage);
     this.messageInput = '';
 
     /* Auto-scroll to bottom */
