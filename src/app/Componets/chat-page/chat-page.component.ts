@@ -28,117 +28,16 @@ export interface Message {
 export class ChatPageComponent {
 
   /* Dummy users list */
-  users: User[] = [
-    {
-      id: 1,
-      name: 'John Doe',
-      avatar: '👨🏻‍💼',
-      lastMessage: 'Thanks for the update!',
-      lastMessageTime: '2:30 PM',
-      status: 'online',
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      avatar: '👩🏻‍💼',
-      lastMessage: 'See you tomorrow',
-      lastMessageTime: '1:15 PM',
-      status: 'offline',
-    },
-    {
-      id: 3,
-      name: 'Mike Johnson',
-      avatar: '👨🏻‍💻',
-      lastMessage: 'Project looks great!',
-      lastMessageTime: '12:45 PM',
-      status: 'online',
-    },
-    {
-      id: 4,
-      name: 'Sarah Wilson',
-      avatar: '👩🏻‍🎤',
-      lastMessage: 'Let me check that',
-      lastMessageTime: '11:20 AM',
-      status: 'offline',
-    },
-    {
-      id: 5,
-      name: 'Tom Brown',
-      avatar: '👨🏻‍🎨',
-      lastMessage: 'Sounds good to me',
-      lastMessageTime: '10:05 AM',
-      status: 'online',
-    },
-    {
-      id: 6,
-      name: 'Lisa Davis',
-      avatar: '👩🏻‍⚕️',
-      lastMessage: "Let's discuss this later",
-      lastMessageTime: 'Yesterday',
-      status: 'offline',
-    },
-    {
-      id: 7,
-      name: 'Alex Martin',
-      avatar: '👨🏻‍⚖️',
-      lastMessage: 'Perfect! Thanks',
-      lastMessageTime: 'Yesterday',
-      status: 'online',
-    },
-    {
-      id: 8,
-      name: 'Emma Taylor',
-      avatar: '👩🏻‍🔬',
-      lastMessage: 'I agree with that',
-      lastMessageTime: '2 days ago',
-      status: 'offline',
-    },
-  ];
+  users: any[] = [];
 
   /* Chat messages for the selected user */
-  messages: Message[] = [
-    {
-      id: 1,
-      senderId: 1,
-      text: 'Hi there! How are you?',
-      timestamp: '10:30 AM',
-      isSent: false,
-    },
-    {
-      id: 2,
-      senderId: 0,
-      text: "Hey John! I'm doing great, thanks for asking!",
-      timestamp: '10:35 AM',
-      isSent: true,
-    },
-    {
-      id: 3,
-      senderId: 1,
-      text: "That's awesome! Any updates on the project?",
-      timestamp: '10:40 AM',
-      isSent: false,
-    },
-    {
-      id: 4,
-      senderId: 0,
-      text: 'Yes, I completed the first phase. Should be ready by tomorrow.',
-      timestamp: '10:45 AM',
-      isSent: true,
-    },
-    {
-      id: 5,
-      senderId: 1,
-      text: 'Thanks for the update!',
-      timestamp: '2:30 PM',
-      isSent: false,
-    },
-  ];
+  messages: any[] = [];
 
   senderId = 1;
   receiverId = 2;
 
   /* State */
-  selectedUser: User | null = null;
+  selectedUser: any | null = null;
   searchText: string = '';
   messageInput: string = '';
   isSidebarOpen: boolean = true;
@@ -148,17 +47,30 @@ export class ChatPageComponent {
   ngOnInit() {
     /* Select the first user by default */
     this.selectedUser = this.users[0];
-    this.signalR.startConnection(this.senderId);
     this.senderId = this.authService.getUser().id;
+    this.signalR.startConnection(this.senderId);
     this.signalR.receiveMessage((senderId: number, message: string) => {
       console.log("hi")
       this.messages.push({
-        id: 1,
+        id: 6,
         senderId: senderId,
         text: message,
-        timestamp: '2:30 PM',
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        }),
         isSent: false,
       });
+      setTimeout(() => {
+      const chatContainer = document.querySelector('.messages-container');
+        if (chatContainer) {
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+      });
+      this.cd.detectChanges();
+    });
+    this.signalR.getChatUsers().subscribe((chats)=> {
+      this.users = chats;
     });
   }
 
@@ -166,8 +78,9 @@ export class ChatPageComponent {
    * selectUser - Set the selected user and update the chat
    * @param user - User to select
    */
-  selectUser(user: User) {
+  selectUser(user:any) {
     this.selectedUser = user;
+    this.receiverId = user.id;
     this.updateMessagesForUser(user.id);
     this.cd.detectChanges();
   }
@@ -177,8 +90,10 @@ export class ChatPageComponent {
    * @param userId - ID of the selected user
    */
   updateMessagesForUser(userId: number) {
-    /* In a real app, fetch messages from the backend */
-    /* For now, keep existing messages */
+    this.signalR.getMessages(userId).subscribe((chats)=> {
+      this.messages = chats;
+      this.cd.detectChanges();
+    });
   }
 
   /**
@@ -201,18 +116,20 @@ export class ChatPageComponent {
       return;
     }
     
-    this.signalR.sendMessage(1,2,this.messageInput);
+    this.signalR.sendMessage(this.senderId,this.receiverId,this.messageInput);
 
-    // const newMessage: Message = {
-    //   id: this.messages.length + 1,
-    //   senderId: 0,
-    //   text: this.messageInput,
-    //   timestamp: new Date().toLocaleTimeString([], {
-    //     hour: '2-digit',
-    //     minute: '2-digit',
-    //   }),
-    //   isSent: true,
-    // };
+    const newMessage: Message = {
+      id: this.messages.length + 1,
+      senderId: this.senderId,
+      text:  this.messageInput,
+      timestamp: new Date().toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
+      isSent: true 
+    };
+
+    this.messages.push(newMessage);
 
     //this.messages.push(newMessage);
     this.messageInput = '';

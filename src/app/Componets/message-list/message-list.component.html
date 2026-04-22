@@ -2,7 +2,7 @@
   <div *ngFor="let message of messages" class="message-wrapper" [class.sent]="message.isSent">
     <div class="message-bubble" [class.sent]="message.isSent">
       <p class="message-text">{{ message.text }}</p>
-      <span class="message-timestamp">{{ message.timestamp }}</span>
+      <span class="message-timestamp">{{ message.timestamp+"z" | date:'hh:mm a':'Asia/Kolkata' }}</span>
     </div>
   </div>
 

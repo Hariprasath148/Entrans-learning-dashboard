@@ -8,5 +8,5 @@ import { User } from '../chat-page/chat-page.component';
   styleUrl: './chat-header.component.css',
 })
 export class ChatHeaderComponent {
-  @Input() user: User | null = null;
+  @Input() user: any | null = null;
 }

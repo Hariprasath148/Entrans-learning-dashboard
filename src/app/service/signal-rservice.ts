@@ -1,27 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
+import { BaseUrl } from './constant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignalRService {
   private hubConnection!: signalR.HubConnection;
-
+  private baseUrl = `${BaseUrl}`;
   constructor(private http: HttpClient) {}
 
   // 🔹 API calls
-  getChatUsers(userId: number) {
-    return this.http.get<number[]>(`http://localhost:5000/api/chat/users/${userId}`);
+  getChatUsers() {
+    return this.http.get<number[]>(`${this.baseUrl}/chat/users`);
   }
 
-  getMessages(user1: number, user2: number) {
-    return this.http.get<any[]>(`http://localhost:5000/api/chat/messages?user1=${user1}&user2=${user2}`);
+  getMessages(user2: number) {
+    return this.http.get<any[]>(`${this.baseUrl}/chat/messages/${user2}`);
   }
 
   startConnection(userId: number) {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://localhost:5058/chatHub')
+      .withUrl(`${this.baseUrl}/chatHub`)
       .withAutomaticReconnect()
       .build();
 

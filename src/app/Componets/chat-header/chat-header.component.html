@@ -1,13 +1,13 @@
 <div class="chat-header" *ngIf="user">
   <div class="header-left">
     <div class="user-avatar-large">
-      {{ user.avatar }}
+      <i class="fas fa-user"></i>
     </div>
     <div class="user-details">
       <h2 class="user-name">{{ user.name }}</h2>
-      <div class="user-status" [class.online]="user.status === 'online'">
+      <div class="user-status" [class.online]="user.isOnline">
         <span class="status-dot"></span>
-        {{ user.status === 'online' ? 'Active now' : 'Offline' }}
+        {{ user.isOnline ? 'Active now' : 'Offline' }}
       </div>
     </div>
   </div>

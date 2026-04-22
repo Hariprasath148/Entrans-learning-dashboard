@@ -8,7 +8,7 @@ import { User } from '../chat-page/chat-page.component';
   styleUrl: './users-list.component.css',
 })
 export class UsersListComponent {
-  @Input() users: User[] = [];
+  @Input() users: any[] = [];
   @Input() selectedUser: User | null = null;
   @Input() searchText: string = '';
 
