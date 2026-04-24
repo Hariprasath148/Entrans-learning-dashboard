@@ -1,15 +1,18 @@
 <div class="chat-page-container">
   <!-- Toggle button for mobile -->
-  <button class="sidebar-toggle" (click)="toggleSidebar()">
+  <!-- <button class="sidebar-toggle" (click)="toggleSidebar()">
     <i class="fas fa-bars"></i>
-  </button>
+  </button> -->
 
   <!-- Users List Sidebar -->
   <div class="users-sidebar" [class.open]="isSidebarOpen">
     <app-users-list
       [users]="filteredUsers"
       [selectedUser]="selectedUser"
+      [isSearch] = "isSearch"
+      [isSearchAction] = "isSearchAction"
       [searchText]="searchText"
+      [searchedUser] = "searchedUser"
       (userSelected)="selectUser($event)"
       (searchChanged)="onSearchChange($event)"
       (searchCleared)="clearSearch()"

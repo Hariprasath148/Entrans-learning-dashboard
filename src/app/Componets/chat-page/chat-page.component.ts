@@ -1,15 +1,18 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { SignalRService } from '../../service/signal-rservice';
 import { Auth } from '../../service/auth';
+import { Subject, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { User } from '../../service/user';
 
-export interface User {
-  id: number;
-  name: string;
-  avatar: string;
-  lastMessage: string;
-  lastMessageTime: string;
-  status: 'online' | 'offline';
-}
+// export interface User {
+//   id: number;
+//   name: string;
+//   avatar: string;
+//   lastMessage: string;
+//   lastMessageTime: string;
+//   status: 'online' | 'offline';
+// }
 
 export interface Message {
   id: number;
@@ -30,6 +33,8 @@ export class ChatPageComponent {
   /* Dummy users list */
   users: any[] = [];
 
+
+
   /* Chat messages for the selected user */
   messages: any[] = [];
 
@@ -41,8 +46,12 @@ export class ChatPageComponent {
   searchText: string = '';
   messageInput: string = '';
   isSidebarOpen: boolean = true;
+  searchSubject = new Subject<string>();
+  searchedUser:any = [];
+  isSearch:boolean = false;
+  isSearchAction:string = "Typing....";
 
-  constructor(private cd: ChangeDetectorRef,private signalR: SignalRService , private authService : Auth) {}
+  constructor(private userService:User,private cd: ChangeDetectorRef,private signalR: SignalRService , private authService : Auth) {}
 
   ngOnInit() {
     /* Select the first user by default */
@@ -67,6 +76,25 @@ export class ChatPageComponent {
     });
     this.signalR.getChatUsers().subscribe((chats)=> {
       this.users = chats;
+    });
+
+    this.searchSubject
+    .pipe(
+      debounceTime(300),           
+      distinctUntilChanged(),       
+      switchMap((text) =>
+        this.userService.getSearchForChat(text)
+      )
+    )
+    .subscribe((users) => {
+      this.searchedUser = users;
+      console.log(users.lenght == 0);
+      
+      if (users.length === 0) {
+        this.isSearchAction = "No Record Found";
+      } 
+
+      this.cd.detectChanges();
     });
   }
 
@@ -95,7 +123,7 @@ export class ChatPageComponent {
   /**
    * filteredUsers - Get filtered users based on search text
    */
-  get filteredUsers(): User[] {
+  get filteredUsers(): any {
     if (!this.searchText.trim()) {
       return this.users;
     }
@@ -123,7 +151,6 @@ export class ChatPageComponent {
     };
 
     this.messages.push(newMessage);
-
     //this.messages.push(newMessage);
     this.messageInput = '';
 
@@ -150,6 +177,10 @@ export class ChatPageComponent {
    */
   clearSearch() {
     this.searchText = '';
+    this.isSearch = false;
+    this.signalR.getChatUsers().subscribe((chats)=> {
+      this.users = chats;
+    });
     this.cd.detectChanges();
   }
 
@@ -157,6 +188,9 @@ export class ChatPageComponent {
    * onSearchChange - Handle search text change
    */
   onSearchChange(text: string) {
+    this.isSearch = true;
     this.searchText = text;
+    if(!text.trim()) return
+    this.searchSubject.next(text);
   }
 }

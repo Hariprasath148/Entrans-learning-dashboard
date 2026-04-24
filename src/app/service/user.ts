@@ -187,4 +187,9 @@ export class User {
       })
     )
   }
+
+  getSearchForChat(searchText:string):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getUserForChat/${searchText}`);
+  }
+
 }

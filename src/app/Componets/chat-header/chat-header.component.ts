@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../chat-page/chat-page.component';
+// import { User } from '../chat-page/chat-page.component';
 
 @Component({
   selector: 'app-chat-header',

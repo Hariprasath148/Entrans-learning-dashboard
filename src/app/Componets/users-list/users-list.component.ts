@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { User } from '../chat-page/chat-page.component';
+//import { User } from '../chat-page/chat-page.component';
 
 @Component({
   selector: 'app-users-list',
@@ -9,10 +9,13 @@ import { User } from '../chat-page/chat-page.component';
 })
 export class UsersListComponent {
   @Input() users: any[] = [];
-  @Input() selectedUser: User | null = null;
+  @Input() selectedUser: any | null = null;
   @Input() searchText: string = '';
+  @Input() isSearch: boolean = false;
+  @Input() isSearchAction: string = '';
+  @Input() searchedUser: any[] = [];
 
-  @Output() userSelected = new EventEmitter<User>();
+  @Output() userSelected = new EventEmitter<any>();
   @Output() searchChanged = new EventEmitter<string>();
   @Output() searchCleared = new EventEmitter<void>();
 
@@ -20,7 +23,7 @@ export class UsersListComponent {
    * onUserClick - Emit when a user is selected
    * @param user - The selected user
    */
-  onUserClick(user: User) {
+  onUserClick(user: any) {
     this.userSelected.emit(user);
   }
 
@@ -44,7 +47,7 @@ export class UsersListComponent {
    * isUserSelected - Check if a user is selected
    * @param user - User to check
    */
-  isUserSelected(user: User): boolean {
+  isUserSelected(user: any): boolean {
     return this.selectedUser?.id === user.id;
   }
 }

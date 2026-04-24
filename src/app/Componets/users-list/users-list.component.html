@@ -17,6 +17,31 @@
     >
       <i class="fas fa-times"></i>
     </button>
+    <div class="search-list-container" *ngIf="isSearch">
+      <div *ngIf="searchedUser.length === 0">
+        {{isSearchAction}}
+      </div>
+      <div *ngIf="searchedUser.length !== 0">
+        <div
+          *ngFor="let user of searchedUser"
+          class="user-item"
+          [class.active]="isUserSelected(user)"
+          (click)="onUserClick(user)"
+        >
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="user-info">
+          <div class="user-name">{{ user.name }}</div>
+          <div class="last-message">{{ user.lastMessage }}{{user.email}}</div>
+        </div>
+        <div class="user-meta">
+          <!-- <div class="last-message-time">{{ user.lastMessageTime+"z" | date:'hh:mm a':'Asia/Kolkata' }}</div> -->
+          <div class="status-indicator" [class.online]="user.isOnline"></div>
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
 
   <!-- Users List -->

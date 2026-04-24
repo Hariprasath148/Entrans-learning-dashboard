@@ -14,6 +14,7 @@
   background-color: white;
   border-bottom: 1px solid #e0e0e0;
   flex-shrink: 0;
+  position: relative;
 }
 
 .search-input-wrapper {
@@ -171,5 +172,35 @@
 }
 
 .users-list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--main-color2);
+}
+
+.search-list-container {
+  position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 56px;
+    z-index: 999;
+    width: 100%;
+    height: 350px;
+    background: #f5f5f5;
+    overflow: auto;
+    padding: 10px;
+}
+
+.search-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-list-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.search-list-container::-webkit-scrollbar-thumb {
+  background-color: var(--main-color3);
+  border-radius: 3px;
+}
+
+.search-list-container::-webkit-scrollbar-thumb:hover {
   background-color: var(--main-color2);
 }
