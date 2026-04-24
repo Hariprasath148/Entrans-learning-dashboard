@@ -123,14 +123,14 @@ export class ChatPageComponent {
   /**
    * filteredUsers - Get filtered users based on search text
    */
-  get filteredUsers(): any {
-    if (!this.searchText.trim()) {
-      return this.users;
-    }
-    return this.users.filter((user) =>
-      user.name.toLowerCase().includes(this.searchText.toLowerCase())
-    );
-  }
+  // get filteredUsers(): any {
+  //   if (!this.searchText.trim()) {
+  //     return this.users;
+  //   }
+  //   return this.users.filter((user) =>
+  //     user.name.toLowerCase().includes(this.searchText.toLowerCase())
+  //   );
+  // }
 
   /**
    * sendMessage - Send a new message
