@@ -11,7 +11,10 @@
       />
       <button
       class="search-clear-btn"
-      (click)="onSearchClear()">
+      (click)="onSearchClear()"
+      [class.hidden]="searchText.length === 0"
+      [class.hidden]="!isSearch"
+    >
       <i class="fas fa-times"></i>
     </button>
     </div>
