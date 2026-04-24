@@ -54,7 +54,7 @@ export class ChatPageComponent {
         id: 6,
         senderId: senderId,
         text: message,
-        timestamp: new Date().toLocaleTimeString(),
+        timestamp: new Date().toISOString(),
         isSent: false,
       });
       setTimeout(() => {
