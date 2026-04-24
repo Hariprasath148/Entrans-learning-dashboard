@@ -1,7 +1,7 @@
 <div class="users-list-wrapper">
   <!-- Search Bar -->
   <div class="search-container">
-    <div class="search-input-wrapper">
+    <div class="search-input-wrapper" [class.search]="isSearch">
       <input
         type="text"
         class="search-input"
@@ -9,19 +9,20 @@
         [value]="searchText"
         (input)="onSearchChange($event)"
       />
-    </div>
-    <button
+      <button
       class="search-clear-btn"
       (click)="onSearchClear()"
       [class.hidden]="!searchText"
     >
       <i class="fas fa-times"></i>
     </button>
-    <div class="search-list-container" *ngIf="isSearch">
-      <div *ngIf="searchedUser.length === 0">
+    </div>
+    <div class="search-list-container-wrapper" *ngIf="isSearch">
+      <div class="search-list-container">
+        <div *ngIf="searchedUser.length === 0">
         {{isSearchAction}}
-      </div>
-      <div *ngIf="searchedUser.length !== 0">
+        </div>
+        <div *ngIf="searchedUser.length !== 0">
         <div
           *ngFor="let user of searchedUser"
           class="user-item"
@@ -40,6 +41,7 @@
           <div class="status-indicator" [class.online]="user.isOnline"></div>
         </div>
       </div>
+        </div>
       </div>
     </div>
   </div>
